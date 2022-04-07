@@ -23,8 +23,6 @@ namespace Calculator
             InitializeComponent();
         }
 
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string str = (string)((Button)e.OriginalSource).Content;
@@ -134,11 +132,13 @@ namespace Calculator
         {
             string str = "%";
             Screen.Text += str;
-        }/// не решает проценты
+        }
+
+        /// не решает проценты
 
         //private void ButtonSignNegative_Click(object sender, RoutedEventArgs e)
         //{
-           ///хз как сделать числа негативными
+        ///хз как сделать числа негативными
         //}
     }
 }
