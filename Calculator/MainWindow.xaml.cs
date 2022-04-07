@@ -21,124 +21,31 @@ namespace Calculator
         public MainWindow()
         {
             InitializeComponent();
+            EventManager.RegisterClassHandler(typeof(Button), Button.ClickEvent, new RoutedEventHandler(ButtonMain));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonMain(object sender, RoutedEventArgs eventArgs)
         {
-            string str = (string)((Button)e.OriginalSource).Content;
-            Screen.Text += str;
-        }
+            Button B = (Button)sender;
 
-        private void ButtonDot_Click(object sender, RoutedEventArgs e)
-        {
-            string str = ".";
-            Screen.Text += str;
-        }
-        private void Button0_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "0";
-            Screen.Text += str;
-        }
-
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "1";
-            Screen.Text += str;
-        }
-
-        private void Button2_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "2";
-            Screen.Text += str;
-        }
-
-        private void Button3_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "3";
-            Screen.Text += str;
-        }
-
-        private void Button4_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "4";
-            Screen.Text += str;
-        }
-
-        private void Button5_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "5";
-            Screen.Text += str;
-        }
-
-        private void Button6_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "6";
-            Screen.Text += str;
-        }
-        private void Button7_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "7";
-            Screen.Text += str;
-        }
-
-        private void Button8_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "8";
-            Screen.Text += str;
-        }
-        private void Button9_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "9";
-            Screen.Text += str;
-        }
-
-        private void ButtonAC_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "";
-            Screen.Text = str;
-        }
-
-        private void ButtonMulti_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "*";
-            Screen.Text += str;
-        }
-
-        private void ButtonDivide_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "/";
-            Screen.Text += str;
-        }
-
-        private void ButtonMinus_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "-";
-            Screen.Text += str;
-        }
-
-        private void ButtonPlus_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "+";
-            Screen.Text += str;
+            switch (B.Content)
+            {
+                case "=":
+                    string value = new DataTable().Compute(Screen.Text, null).ToString();
+                    Screen.Text = value;
+                    break;
+                case "AC":
+                    Screen.Text = "";
+                    break;
+                default:
+                    Screen.Text += B.Content;
+                    break;
+            }
         }
 
         private void ButtonEqual_Click(object sender, RoutedEventArgs e)
         {
-            string value = new DataTable().Compute(Screen.Text, null).ToString();
-            Screen.Text = value;
+
         }
-
-        private void ButtonPercent_Click(object sender, RoutedEventArgs e)
-        {
-            string str = "%";
-            Screen.Text += str;
-        }
-
-        /// не решает проценты
-
-        //private void ButtonSignNegative_Click(object sender, RoutedEventArgs e)
-        //{
-        ///хз как сделать числа негативными
-        //}
     }
 }
