@@ -134,11 +134,11 @@ namespace Calculator
         {
             string str = "%";
             Screen.Text += str;
-        }
+        }/// не решает проценты
 
         //private void ButtonSignNegative_Click(object sender, RoutedEventArgs e)
         //{
-           
+           ///хз как сделать числа негативными
         //}
     }
 }
